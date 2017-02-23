@@ -1,5 +1,5 @@
 import assert from 'assert';
-import NuclearChicken from '../src/NuclearChicken';
+import NuclearChicken from '../../src/client/NuclearChicken';
 
 class ResolvedPromise {
     constructor() { this.promise = Promise.resolve(); }

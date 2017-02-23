@@ -2,15 +2,14 @@
   "name": "webpack-es2017-babel-mocha-example",
   "version": "0.0.1",
   "description": "Node babel template for the sake of nuclear chickens.",
-  "main": "dist/component.js",
+  "main": "build/client.js",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "rm -rf build && mkdir build",
     "prebuild": "npm run clean && eslint src/ && npm run test",
     "build": "webpack -p",
-    "devbuild": "webpack",
-    "start": "node --require babel-polyfill dist/bundle.js",
+    "start": "node index.js",
     "pretest": "eslint test/",
-    "test": "mocha --use_strict --require babel-polyfill --compilers js:babel-register"
+    "test": "mocha --use_strict --require babel-polyfill --compilers js:babel-register test/**/*.spec.js"
   },
   "author": "Andras Popovics",
   "license": "ISC",
@@ -28,5 +27,10 @@
     "mocha-cli": "^1.0.1",
     "webpack": "^2.2.0-rc.1",
     "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "csvtojson": "^1.1.4",
+    "express": "^4.14.1",
+    "winston": "^2.3.1"
   }
 }
