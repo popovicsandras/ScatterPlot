@@ -5,7 +5,12 @@ function dataEndpoint(dataFilePath, logger = console) {
         csv()
             .fromFile(dataFilePath)
             .on('end_parsed', (jsonArrObj) => {
-                res.json(jsonArrObj);
+                res.json(jsonArrObj.map((coordinates) => {
+                    return {
+                        x: parseFloat(coordinates.x),
+                        y: parseFloat(coordinates.y)
+                    };
+                }));
             })
             .on('error', (error) => {
                 logger.log('error', error);
