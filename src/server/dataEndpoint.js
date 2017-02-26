@@ -1,22 +1,24 @@
 const csv = require('csvtojson');
 
-function dataEndpoint(dataFilePath, logger = console) {
-    return function (req, res) {
-        csv()
-            .fromFile(dataFilePath)
-            .on('end_parsed', (jsonArrObj) => {
-                res.json(jsonArrObj.map((coordinates) => {
-                    return {
-                        x: parseFloat(coordinates.x),
-                        y: parseFloat(coordinates.y)
-                    };
-                }));
-            })
-            .on('error', (error) => {
-                logger.log('error', error);
-                res.sendStatus(500);
-            });
-    }
+function sendJsonResponse(response, jsonArrObj) {
+    response.json(jsonArrObj.map((coordinates) => {
+        return {
+            x: parseFloat(coordinates.x),
+            y: parseFloat(coordinates.y)
+        };
+    }));
 }
 
-module.exports = dataEndpoint;
+function handleError(response, logger, error) {
+    logger.log('error', error);
+    response.sendStatus(500);
+}
+
+module.exports = function dataEndpoint(dataFilePath, logger = console) {
+    return function expressMiddleWare(request, response) {
+        csv()
+            .fromFile(dataFilePath)
+            .on('end_parsed', sendJsonResponse.bind(null, response))
+            .on('error', handleError.bind(null, response, logger));
+    }
+}

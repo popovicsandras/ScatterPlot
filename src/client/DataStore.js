@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 
-const endpoint = '/data';
+const endpoint = '/api/v1/data';
 
 const DataStorePrototype = {
     async fetch() {

@@ -1,12 +1,13 @@
 {
-  "name": "webpack-es2017-babel-mocha-example",
+  "name": "scatterplot",
   "version": "0.0.1",
-  "description": "Node babel template for the sake of nuclear chickens.",
-  "main": "build/client.js",
+  "description": "Scatter plot chart of nuclear chickens.",
+  "main": "build/app.js",
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "prebuild": "npm run clean && eslint src/ && npm run test",
-    "build": "webpack",
+    "build": "npm run webpack",
+    "webpack": "webpack -p",
     "start": "node index.js",
     "pretest": "eslint test/",
     "test": "mocha --use_strict --require babel-polyfill --compilers js:babel-register test/**/*.spec.js"
@@ -24,6 +25,7 @@
     "babel-preset-es2017": "^6.16.0",
     "babel-preset-react": "^6.23.0",
     "eslint": "^3.12.2",
+    "html-webpack-plugin": "^2.28.0",
     "mocha": "^3.2.0",
     "mocha-cli": "^1.0.1",
     "webpack": "^2.2.0-rc.1",

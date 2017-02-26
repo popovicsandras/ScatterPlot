@@ -8,10 +8,7 @@ export default class ScatterPlotController extends React.Component {
         super(props);
         
         this.dataStore = DataStore();
-        this.state = { 
-            data: [],
-            loading: false
-        };
+        this.state = { data: [], loading: false };
     }
 
     componentWillMount() {
@@ -24,10 +21,7 @@ export default class ScatterPlotController extends React.Component {
     }
     
     onDataStoreFetch(data) {
-        this.setState({
-            data: data,
-            loading: false
-        });
+        this.setState({ data: data, loading: false });
     }
     
     render() {
