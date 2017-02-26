@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     context: path.resolve(__dirname, 'src/client/'),
     entry: { 
-        'app': ['babel-polyfill', './client.jsx'],
+        'app': ['babel-polyfill', './scripts/client.jsx'],
         'app-dependencies': ['react', 'react-dom']
     },
     resolve: {

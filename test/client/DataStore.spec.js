@@ -1,5 +1,5 @@
 import assert from 'assert';
-import DataStore from 'client/DataStore';
+import DataStore from 'DataStore';
 
 describe('DataStore', function() {
 

@@ -8,7 +8,7 @@ export default function(data) {
             text: 'World domination intention in the nuclear chicken population by intelligence'
         },
         subtitle: { 
-            text: 'Source: Heinz  2003' 
+            text: 'Source: Chickengraph' 
         },
         xAxis: {
             title: {
@@ -24,9 +24,12 @@ export default function(data) {
         legend: { 
             enabled: false 
         },
+        credits: {
+            enabled: false
+        },
         series: [{
             name: 'Chicken',
-            color: 'rgba(223, 83, 83, .5)',
+            color: 'rgba(83, 150, 200, .5)',
             data: data
         }]
     };
