@@ -3,13 +3,10 @@
         <title>Scatter Plot</title>
     </head>
     <body>
-        <div id="app">
-            <canvas id="myChart" width="400" height="400"></canvas>
-        </div>
+        <div id="app"></div>
         <script src="client.js"></script>
         <script>
-            var ctx = document.getElementById("myChart").getContext("2d");
-            scatterPlotClient(ctx);
+            scatterPlotClient(document.getElementById('app'));
         </script>
     </body>
 </html>

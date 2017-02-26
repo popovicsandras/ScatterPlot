@@ -1,7 +1,10 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/client/client.jsx',
+    entry: ['babel-polyfill', './src/client/client.jsx'],
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'client.js',

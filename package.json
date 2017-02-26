@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "prebuild": "npm run clean && eslint src/ && npm run test",
-    "build": "webpack -p",
+    "build": "webpack",
     "start": "node index.js",
     "pretest": "eslint test/",
     "test": "mocha --use_strict --require babel-polyfill --compilers js:babel-register test/**/*.spec.js"
@@ -30,9 +30,9 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "chart.js": "^2.5.0",
     "csvtojson": "^1.1.4",
     "express": "^4.14.1",
+    "highcharts": "^5.0.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "whatwg-fetch": "^2.0.2",
