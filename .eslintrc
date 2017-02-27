@@ -16,6 +16,8 @@
   "globals": {
     "expect": true,
     "sinon": true,
-    "fetch": true
+    "fetch": true,
+    "window": true,
+    "$": true
   }
 }

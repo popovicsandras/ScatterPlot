@@ -7,7 +7,6 @@ const DataStorePrototype = {
             const json = await response.json();
             return json.map(({x,y}) => [x,y]);
         } catch (ex) {
-            console.error('parsing failed', ex);
             return [];
         }
     }

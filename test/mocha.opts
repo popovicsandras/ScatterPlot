@@ -1,5 +1,3 @@
---require test/setup.js
 --require babel-polyfill
---reporter nyan
+--reporter progress
 --compilers js:babel-register 
-test/**/*.spec.js
