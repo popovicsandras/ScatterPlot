@@ -1,4 +1,5 @@
---use_strict 
+--require test/setup.js
 --require babel-polyfill
 --reporter nyan
---compilers js:babel-register test/**/*.spec.js
+--compilers js:babel-register 
+test/**/*.spec.js
