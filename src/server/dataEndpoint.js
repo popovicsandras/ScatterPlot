@@ -9,8 +9,8 @@ function sendJsonResponse(response, jsonArrObj) {
     }));
 }
 
-function handleError(response, logger, error) {
-    logger.log('error', error);
+function handleError(dataFilePath, response, logger, error) {
+    logger.error(`File: ${dataFilePath}`, error);
     response.sendStatus(500);
 }
 
@@ -19,6 +19,6 @@ module.exports = function dataEndpoint(dataFilePath, logger = console) {
         csv()
             .fromFile(dataFilePath)
             .on('end_parsed', sendJsonResponse.bind(null, response))
-            .on('error', handleError.bind(null, response, logger));
+            .on('error', handleError.bind(null, dataFilePath, response, logger));
     }
 }
