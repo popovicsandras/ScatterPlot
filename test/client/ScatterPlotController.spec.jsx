@@ -4,10 +4,6 @@ import ScatterPlotController from 'ScatterPlotController';
 import ScatterPlotChart from 'ScatterPlotChart';
 import Highcharts from 'highcharts';
 
-function waitForNextTick(callback) {
-    setTimeout(callback, 0);
-} 
-
 describe('<ScatterPlotController />', function() {
     
     let highchartsStub;
@@ -17,9 +13,7 @@ describe('<ScatterPlotController />', function() {
             return { 
                 showLoading: () => {}, 
                 hideLoading: () => {},
-                series: [
-                    {setData: () => {}}
-                ]
+                series: [ {setData: () => {}} ]
             };
         });
     });
@@ -37,20 +31,17 @@ describe('<ScatterPlotController />', function() {
         expect(wrapper.find(ScatterPlotChart).prop('data')).to.be.eql([]);
     });
 
-    it('should update <ScatterPlotChart /> with loading state=false after the data has been loaded', function(done) {
+    it('should update <ScatterPlotChart /> with loading state=false after the data has been loaded', async function() {
         
-        const DataStore = () => {
-            return {
-                fetch: () => { return Promise.resolve([[3,4]]); }
-            }
+        const resolvedPromise = Promise.resolve([[3,4]]);
+        const DataStore = function() {
+            return { fetch: () => { return resolvedPromise; } }
         };
         
         const wrapper = mount(<ScatterPlotController DataStore={DataStore} />);
+        await resolvedPromise;
 
-        waitForNextTick(() => {
-            expect(wrapper.find(ScatterPlotChart).prop('loading')).to.be.equal(false);
-            expect(wrapper.find(ScatterPlotChart).prop('data')).to.be.eql([[3,4]]);
-            done();
-        });
+        expect(wrapper.find(ScatterPlotChart).prop('loading')).to.be.equal(false);
+        expect(wrapper.find(ScatterPlotChart).prop('data')).to.be.eql([[3,4]]);
     });
 });
