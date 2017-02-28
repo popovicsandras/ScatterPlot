@@ -6,8 +6,9 @@ export default class ScatterPlotController extends React.Component {
     
     constructor(props) {
         super(props);
+        const DataStoreFactory = props.DataStore || DataStore;
         
-        this.dataStore = DataStore();
+        this.dataStore = DataStoreFactory();
         this.state = { data: [], loading: false };
     }
 
@@ -17,7 +18,8 @@ export default class ScatterPlotController extends React.Component {
 
     componentDidMount() {
         this.dataStore.fetch()
-            .then(this.onDataStoreFetch.bind(this));
+            .then(this.onDataStoreFetch.bind(this))
+            .catch(this.onDataStoreFetch.bind(this, [])); 
     }
     
     onDataStoreFetch(data) {

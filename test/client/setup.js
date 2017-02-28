@@ -3,13 +3,22 @@ const jsdom = require('jsdom'),
     chai = require('chai'),
     sinonChai = require('sinon-chai');
 
-const document = jsdom.jsdom('<!doctype html><html><body></body></html>'),
+const document = jsdom.jsdom('<html><body></body></html>'),
     window = document.defaultView;
 
 let $;
 
-global.window = window;
 global.document = document;
+global.window = window;
+
+Object.keys(document.defaultView).forEach((property) => {
+    if (typeof global[property] === 'undefined') {
+        global[property] = document.defaultView[property];
+    }
+});
+
+global.navigator = { userAgent: 'node.js' };
+
 global.HTMLElement = window.HTMLElement;
 global.XMLHttpRequest = window.XMLHttpRequest;
 
