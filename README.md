@@ -18,8 +18,6 @@ You are required to write an application using JavaScript, that will render a Sc
 
 
 # The solution
-
-## Notes
 This is not the way I would write code for this kind of small application. However the structure is intended to show how I would work in a large scale app (more or less).
 
 ## Pre-requisites
