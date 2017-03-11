@@ -1,4 +1,4 @@
-const scatterPlotServer = require('./src/server/server')
+const scatterPlotServer = require('./src/server/server'),
     path = require('path');
 
 const appServerConfig = {

@@ -27,6 +27,7 @@ global.$ = $;
 window.$ = $;
 
 // This can be required only after the global.window and global.XMLHttpRequest have been created
+// Using sinon v2 or above fix this problem
 const sinon = require('sinon');
 
 chai.use(sinonChai);
