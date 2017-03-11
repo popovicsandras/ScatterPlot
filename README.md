@@ -17,8 +17,6 @@ You are required to write an application using JavaScript, that will render a Sc
 -	Use some mechanism to show code quality and standards analysis output
 
 
-The task should not take longer than 2 hours to complete. You will find the model data in the file provided as data.csv.
-
 # The solution
 
 ## Notes
